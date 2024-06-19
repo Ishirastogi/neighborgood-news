@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { searchNews } from "../../api/newsAPI";
 
+const pageSize = 10; 
+
 export const searchArticles = createAsyncThunk(
   "search/searchArticles",
   async ({ query, page }) => {
@@ -34,6 +36,7 @@ const searchSlice = createSlice({
       .addCase(searchArticles.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.articles = action.payload.articles;
+        state.totalPages = Math.ceil(action.payload.totalArticles / pageSize);
       })
       .addCase(searchArticles.rejected, (state, action) => {
         state.status = "failed";
