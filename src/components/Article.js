@@ -8,9 +8,9 @@ const Article = ({ article }) => {
       key={article.url}
       className="flex flex-col bg-white border rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
     >
-      {article.urlToImage && (
+      {article.image && (
         <img
-          src={article.urlToImage}
+          src={article.image}
           alt={article.title}
           className="w-full h-48 object-cover"
         />
